@@ -8,6 +8,23 @@ from scipy import spatial
 files = ['Dataset/1.csv', 'Dataset/2.csv', 'Dataset/3.csv', 'Dataset/4.csv', 'Dataset/5.csv', 'Dataset/6.csv',
          'Dataset/7.csv', 'Dataset/8.csv', 'Dataset/9.csv', 'Dataset/10.csv', 'Dataset/11.csv']
 
+def file_check():
+    global files
+    for file in files:
+        try:
+            pd.read_csv(file)
+        except FileNotFoundError:
+            print("Please check your Datasets. Some files seem to be missing/corrupted.")
+            return func_pass()
+def func_pass():
+    global files
+    n = input("Enter 1 if you corrected your files")
+    if n == '1':
+        return file_check(files)
+    else:
+        print("Please enter 1.")
+        func_pass()
+file_check(files)
 
 def data_analysis(file):
     df = pd.concat(map(pd.read_csv, file))
