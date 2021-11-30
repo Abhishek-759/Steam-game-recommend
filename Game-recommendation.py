@@ -208,7 +208,7 @@ Number = st.number_input(label2, min_value=10, max_value=50, step=10)
 if preference != '':
     string = 'Showing top ' + str(Number) + ' ' + preference + ' Games'
     st.markdown(string)
-    path = preference + '.csv'
+    path = 'Output/' + preference + '.csv'
     df = pd.read_csv(path)
     for i in range(Number):
         game_id = df.iloc[i]['Game']
