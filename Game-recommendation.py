@@ -5,7 +5,8 @@ import streamlit as st
 import operator
 from scipy import spatial
 
-files = ['1.csv', '2.csv', '3.csv', '4.csv', '5.csv', '6.csv', '7.csv', '8.csv', '9.csv', '10.csv', '11.csv']
+files = ['Dataset/1.csv', 'Dataset/2.csv', 'Dataset/3.csv', 'Dataset/4.csv', 'Dataset/5.csv', 'Dataset/6.csv',
+         'Dataset/7.csv', 'Dataset/8.csv', 'Dataset/9.csv', 'Dataset/10.csv', 'Dataset/11.csv']
 
 
 def data_analysis(file):
@@ -77,10 +78,10 @@ def data_analysis(file):
         ascending=False).drop(
         ['Overall Rating'], axis=1)
 
-    df_rating.to_csv('Highest Rated.csv', index=False)
-    df_trending.to_csv('Trending.csv', index=False)
-    df_all_time.to_csv('All-time Hit.csv', index=False)
-    df_crit.to_csv('Critics Favorite.csv', index=False)
+    df_rating.to_csv('Output/Highest Rated.csv', index=False)
+    df_trending.to_csv('Output/Trending.csv', index=False)
+    df_all_time.to_csv('Output/All-time Hit.csv', index=False)
+    df_crit.to_csv('Output/Critics Favorite.csv', index=False)
 
 
 def binary(genre_list):
@@ -133,7 +134,7 @@ categories = []
 def KNN_recommend():
     global df_game_desc
     df_desc = pd.read_csv('steam.csv')
-    ratings = pd.read_csv('Highest Rated.csv')
+    ratings = pd.read_csv('Output/Highest Rated.csv')
     df_game_desc = ratings.merge(df_desc, how='left', on='Game')
 
     for index, row in df_game_desc.iterrows():
@@ -184,13 +185,13 @@ KNN_recommend()
 df_game_desc.name = df_game_desc.name.str.lower()
 
 flag = 0
-if os.path.exists('Highest Rated.csv') is False:
+if os.path.exists('Output/Highest Rated.csv') is False:
     flag = 1
-if os.path.exists('Trending.csv') is False:
+if os.path.exists('Output/Trending.csv') is False:
     flag = 1
-if os.path.exists('All-time Hit.csv') is False:
+if os.path.exists('Output/All-time Hit.csv') is False:
     flag = 1
-if os.path.exists('Critics Favorite.csv') is False:
+if os.path.exists('Output/Critics Favorite.csv') is False:
     flag = 1
 
 if flag == 1:
@@ -218,7 +219,7 @@ if preference != '':
         st.markdown(link, unsafe_allow_html=True)
 else:
     st.markdown('Please select a preference or search below.')
-    game_name = st.text_input("Search the game name", placeholder='ex: Counter-strike, Tom Clancy...')
+    game_name = st.text_input("Search the game name", placeholder='ex: Counter-strike, Counter, Strike...')
     game_name = game_name.lower()
     if game_name == '':
         st.markdown('Please enter valid game id.')
