@@ -24,7 +24,6 @@ The recommendation based on game name search is done using KNN model. The UI is 
 4. commit and push your changes<br>
 &emsp;$ git add .<br>
 &emsp;$ git commit -am "make it better"<br>
-&emsp;$ git push heroku master<br>
 5. Deploy the app<br>
 &emsp;$ heroku create<br>
 &emsp;$ git push heroku master<br>
