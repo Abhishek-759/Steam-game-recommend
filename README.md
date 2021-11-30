@@ -29,5 +29,5 @@ The recommendation based on game name search is done using KNN model. The UI is 
 &emsp;$ git push heroku master<br>
 6. Now, you can go to https://dashboard.heroku.com/apps and check your web application, change its name and have full control over it. <br>
 
-<h4> There you go. Your website is deployed and completely functional! 
-<b> To check the working model of the app, go to: https://steam-recommendation.herokuapp.com/
+<h4> There you go. Your website is deployed and completely functional! <br>
+<h5> To check the working model of the app, go to: https://steam-recommendation.herokuapp.com/
